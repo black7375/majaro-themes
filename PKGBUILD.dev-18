@@ -1,0 +1,39 @@
+# Maintainer: Ramon Buldó <rbuldo@gmail.com>
+
+pkgbase=manjaro-kde-settings
+pkgname=('manjaro-kde-settings-18.0'
+         'manjaro-kde-minimal-settings-18.0')
+pkgver=20180804
+pkgrel=1
+pkgdesc="Manjaro Linux KDE settings"
+arch=('any')
+url="https://gitlab.manjaro.org/profiles-and-settings/manjaro-kde-settings"
+license=('GPL')
+_gitcommit=f53b7696bccdf679116681867940e11e782c772b
+source=("${pkgbase}-$_gitcommit.tar.gz::$url/-/archive/master/${pkgbase}-$_gitcommit.tar.gz")
+md5sums=('4cadcdfad8d8350ec5c75a39777f71d3')
+
+pkgver() {
+  date +%Y%m%d
+}
+
+package_manjaro-kde-settings-18.0() {
+  pkgdesc="Manjaro Linux KDE settings"
+  conflicts=('manjaro-desktop-settings' 'manjaro-kde-settings')
+  provides=('manjaro-desktop-settings' 'manjaro-kde-settings')
+  depends=('manjaro-base-skel' 'adapta-breath-theme' 'plasma5-theme-adaptabreath')
+
+  cp -r ${srcdir}/${pkgbase}-master-${_gitcommit}/etc ${pkgdir}/etc
+  cp -r ${srcdir}/${pkgbase}-master-${_gitcommit}/usr ${pkgdir}/usr
+}
+
+package_manjaro-kde-minimal-settings-18.0() {
+  pkgdesc="Manjaro Linux KDE minimal settings"
+  conflicts=('manjaro-desktop-settings' 'manjaro-kde-minimal-settings')
+  provides=('manjaro-desktop-settings' 'manjaro-kde-minimal-settings')
+  depends=('manjaro-base-skel' 'adapta-breath-theme' 'plasma5-theme-adaptabreath')
+
+  cp -r "${srcdir}/${pkgbase}-master-${_gitcommit}/etc" "${pkgdir}/etc"
+  cp -r "${srcdir}/${pkgbase}-master-${_gitcommit}/usr" "${pkgdir}/usr"
+  cp -f "${srcdir}/${pkgbase}-master-${_gitcommit}/minimal/plasma-org.kde.plasma.desktop-appletsrc" "${pkgdir}/etc/skel/.config/plasma-org.kde.plasma.desktop-appletsrc"
+}
