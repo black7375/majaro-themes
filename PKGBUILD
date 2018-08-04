@@ -26,6 +26,7 @@ package_manjaro-kde-settings() {
   depends=('manjaro-base-skel' 'breath-icon-theme' 'gtk-theme-breath' 'plasma5-themes-breath' 'noto-fonts-compat')
 
   cp -r ${srcdir}/${pkgbase}-${_gitcommit}/etc ${pkgdir}/etc
+  cp -H "${srcdir}/touchpadrc" "${pkgdir}/etc/xdg/touchpadrc"
   cp -r ${srcdir}/${pkgbase}-${_gitcommit}/usr ${pkgdir}/usr
 }
 
@@ -37,6 +38,6 @@ package_manjaro-kde-minimal-settings() {
 
   cp -r "${srcdir}/${pkgbase}-${_gitcommit}/etc" "${pkgdir}/etc"
   cp -r "${srcdir}/${pkgbase}-${_gitcommit}/usr" "${pkgdir}/usr"
-  cp -r "${srcdir}/touchpadrc" "${pkgdir}/etc/xdg/touchpadrc"
+  cp -H "${srcdir}/touchpadrc" "${pkgdir}/etc/xdg/touchpadrc"
   cp -f "${srcdir}/${pkgbase}-${_gitcommit}/minimal/plasma-org.kde.plasma.desktop-appletsrc" "${pkgdir}/etc/skel/.config/plasma-org.kde.plasma.desktop-appletsrc"
 }
