@@ -3,17 +3,20 @@
 pkgbase=artwork-breath
 pkgname=('breath-icon-theme' 'breath-dark-icon-theme' 'plasma5-themes-breath' 'sddm-breath-theme' 'breath-wallpaper')
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 _gitcommit=32f53e151801b584c138fbf20d1b3b3e93e583d7
 url=https://gitlab.manjaro.org/artwork/themes/breath
 arch=('any')
 license=('LGPL')
 makedepends=('extra-cmake-modules' 'plasma-framework')
-source=("breath-$pkgver-$pkgrel.tar.gz::$url/-/archive/master/breath-$_gitcommit.tar.gz")
-md5sums=('05d4a18b73f4d2da639e3ba061503fc0')
+source=("breath-$pkgver-$pkgrel.tar.gz::$url/-/archive/master/breath-$_gitcommit.tar.gz"
+		'0001-Fix-for-media-playback-status-and-Switch-display-ico.patch') 
+md5sums=('05d4a18b73f4d2da639e3ba061503fc0'
+         '83f99f2dd4a247bdf0781190270016e1')
 
 prepare() {
   mv $srcdir/breath-master-$_gitcommit $srcdir/breath
+  patch -Np1 -i 0001-Fix-for-media-playback-status-and-Switch-display-ico.patch
   mkdir -p build
 }
 
