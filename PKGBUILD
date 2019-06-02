@@ -16,7 +16,7 @@ md5sums=('05d4a18b73f4d2da639e3ba061503fc0'
 
 prepare() {
   mv $srcdir/breath-master-$_gitcommit $srcdir/breath
-  patch -Np1 -i 0001-Fix-for-media-playback-status-and-Switch-display-ico.patch
+  patch -d breath -Np1 -i ../0001-Fix-for-media-playback-status-and-Switch-display-ico.patch
   mkdir -p build
 }
 
