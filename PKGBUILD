@@ -1,7 +1,7 @@
 # Maintainer: Bernhard Landauer <oberon@manjaro.org>
 
 pkgname=manjaro-icons
-pkgver=20181011
+pkgver=20191015
 pkgrel=1
 _commit=75988529ecfe9751c481c03d98979888fd2113a5
 pkgdesc='Official Manjaro icons'
@@ -42,5 +42,6 @@ package() {
   ln -s $src/96x96.png 96x96/apps/manjaro.png
   ln -s $src/128x128.png 128x128/apps/manjaro.png
   ln -s $src/maia.svg scalable/apps/manjaro.svg
+  ln -s $src/maia.svg scalable/apps/manjarolinux.svg
   ln -s $src/maia.svg ../whiskermenu-manjaro.svg
 }
