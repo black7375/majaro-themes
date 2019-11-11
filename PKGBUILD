@@ -3,8 +3,8 @@
 pkgbase=manjaro-kde-settings
 pkgname=('manjaro-kde-settings'
          'manjaro-kde-minimal-settings')
-pkgver=20190331
-pkgrel=2
+pkgver=20191111
+pkgrel=1
 pkgdesc="Manjaro Linux KDE settings"
 arch=('any')
 url="https://gitlab.manjaro.org/profiles-and-settings/manjaro-kde-settings"
@@ -15,7 +15,7 @@ source=("${pkgbase}-$_gitcommit.tar.gz::$url/-/archive/$_gitcommit/${pkgbase}-$_
         "$url/commit/6103f6b.patch")
 md5sums=('632626d88323689ef7cd6bbff81279c3'
          'a91bf6df3627197857959c0a9f25a5d8'
-         '88fed22fdee74d9295b7b98dd6c6e3cf')
+         'ac9ecfe4d440446df3d66fdf0a9ebbc7')
 
 pkgver() {
   date +%Y%m%d
