@@ -3,7 +3,7 @@
 pkgbase=manjaro-kde-settings
 pkgname=('manjaro-kde-settings'
          'manjaro-kde-minimal-settings')
-pkgver=20191111
+pkgver=20191118
 pkgrel=1
 pkgdesc="Manjaro Linux KDE settings"
 arch=('any')
