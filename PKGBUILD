@@ -1,53 +1,51 @@
-# Maintainer: Ramon Buldó <rbuldo@gmail.com>
+# Maintainer: Bernhard Landauer <bernhard@manjaro.org>
 
 pkgbase=manjaro-kde-settings
-pkgname=('manjaro-kde-settings'
-         'manjaro-kde-minimal-settings')
-pkgver=20191121
+pkgname=("$pkgbase"
+         # 'manjaro-kde-minimal-settings'
+         )
+pkgver=20200121
 pkgrel=1
+_branch='master'
 pkgdesc="Manjaro Linux KDE settings"
 arch=('any')
-url="https://gitlab.manjaro.org/profiles-and-settings/manjaro-kde-settings"
+url="https://gitlab.manjaro.org/profiles-and-settings/$pkgbase"
 license=('GPL')
-_gitcommit=a73f18b7581ecaf6b9630434c1117f5ba72d7864
 conflicts=('manjaro-desktop-settings')
 provides=('manjaro-desktop-settings')
-depends=('breath-icon-theme'
+replaces=('manjaro-kde-settings-dev')
+makedepends=('git')
+depends=('breath2-icon-themes'
+    'breath2-wallpaper'
     'gtk-theme-breath'
     'manjaro-base-skel'
     'manjaro-icons'
     'noto-fonts-compat'
-    'plasma5-themes-breath')
-source=("${pkgbase}-$_gitcommit.tar.gz::$url/-/archive/$_gitcommit/${pkgbase}-$_gitcommit.tar.gz"
-        "$url/raw/7731a8f6d640c4158e52c4f253565b3d99ad0391/etc/xdg/touchpadrc"
-        "$url/commit/6103f6b.patch")
-md5sums=('632626d88323689ef7cd6bbff81279c3'
-         'a91bf6df3627197857959c0a9f25a5d8'
-         'ac9ecfe4d440446df3d66fdf0a9ebbc7')
+    'plasma5-themes-breath2'
+    'xdg-desktop-portal'
+    'xdg-desktop-portal-kde')
+source=("git+$url.git#branch=$_branch")
+md5sums=('SKIP')
 
 pkgver() {
   date +%Y%m%d
 }
 
-prepare() {
-  cd ${srcdir}/${pkgbase}-${_gitcommit}
-  patch -p1 -i ../6103f6b.patch
-  cd ..
-}
-
 package_manjaro-kde-settings() {
   pkgdesc="Manjaro Linux KDE settings"
 
-  cp -r ${srcdir}/${pkgbase}-${_gitcommit}/etc ${pkgdir}/etc
-  cp -H "${srcdir}/touchpadrc" "${pkgdir}/etc/xdg/touchpadrc"
-  cp -r ${srcdir}/${pkgbase}-${_gitcommit}/usr ${pkgdir}/usr
+  cp -r $pkgbase/etc $pkgdir/etc
+  cp -r $pkgbase/usr $pkgdir/usr
+  
+  # show wallpapers from other pkgs in Plasma Desktop Settings
+  mkdir -p $pkgdir/usr/share/wallpapers
+  ln -s ../backgrounds $pkgdir/usr/share/wallpapers/Manjaro
 }
 
 package_manjaro-kde-minimal-settings() {
   pkgdesc="Manjaro Linux KDE minimal settings"
 
-  cp -r "${srcdir}/${pkgbase}-${_gitcommit}/etc" "${pkgdir}/etc"
-  cp -r "${srcdir}/${pkgbase}-${_gitcommit}/usr" "${pkgdir}/usr"
-  cp -H "${srcdir}/touchpadrc" "${pkgdir}/etc/xdg/touchpadrc"
-  cp -f "${srcdir}/${pkgbase}-${_gitcommit}/minimal/plasma-org.kde.plasma.desktop-appletsrc" "${pkgdir}/etc/skel/.config/plasma-org.kde.plasma.desktop-appletsrc"
+  cp -r $pkgbase/etc $pkgdir/etc
+  cp -r $pkgbase/usr $pkgdir/usr
+  cp -f $pkgbase/minimal/plasma-org.kde.plasma.desktop-appletsrc $pkgdir/etc/skel/.config/plasma-org.kde.plasma.desktop-appletsrc
 }
