@@ -1,10 +1,10 @@
 # Maintainer: Bernhard Landauer <bernhard@manjaro.org>
 
 pkgbase=manjaro-kde-settings
-pkgname=("$pkgbase"
-         # 'manjaro-kde-minimal-settings'
+pkgname=("$pkgbase-19.0"
+         # 'manjaro-kde-minimal-settings-19.0'
          )
-pkgver=20200121
+pkgver=20200129
 pkgrel=1
 _branch='master'
 pkgdesc="Manjaro Linux KDE settings"
@@ -31,7 +31,7 @@ pkgver() {
   date +%Y%m%d
 }
 
-package_manjaro-kde-settings() {
+package_manjaro-kde-settings-19.0() {
   pkgdesc="Manjaro Linux KDE settings"
 
   cp -r $pkgbase/etc $pkgdir/etc
@@ -42,7 +42,7 @@ package_manjaro-kde-settings() {
   ln -s ../backgrounds $pkgdir/usr/share/wallpapers/Manjaro
 }
 
-package_manjaro-kde-minimal-settings() {
+package_manjaro-kde-minimal-setting-19.0() {
   pkgdesc="Manjaro Linux KDE minimal settings"
 
   cp -r $pkgbase/etc $pkgdir/etc
