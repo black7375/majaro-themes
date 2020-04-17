@@ -4,8 +4,8 @@ pkgbase=manjaro-kde-settings
 pkgname=("$pkgbase-19.0"
          # 'manjaro-kde-minimal-settings-19.0'
          )
-pkgver=20200408
-pkgrel=2
+pkgver=20200417
+pkgrel=1
 _branch='master'
 pkgdesc="Manjaro Linux KDE settings"
 arch=('any')
