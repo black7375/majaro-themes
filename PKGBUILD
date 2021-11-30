@@ -29,4 +29,5 @@ package_manjaro-kde-settings() {
   pkgdesc="Manjaro Linux KDE settings"
 
   cp -r $pkgname/etc $pkgdir/etc
+  cp -r $pkgname/usr $pkgdir/usr
 }
