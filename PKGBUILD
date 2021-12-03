@@ -16,6 +16,7 @@ depends=('manjaro-base-skel'
          'manjaro-icons'
          'noto-fonts-compat'
          'plasma5-themes-breath'
+         'sddm-breath-theme'
          'xdg-desktop-portal'
          'xdg-desktop-portal-kde')
 source=("git+$url.git")
