@@ -2,11 +2,14 @@
 # Maintainer: Bogdan Covaciu <bogdan@manjaro.org
 
 pkgbase=artwork-breath
-pkgname=('plasma5-themes-breath'
+pkgname=(
+    'plasma5-themes-breath-migration'
+    'plasma5-themes-breath'
+    'plasma5-themes-breath-extra'
     'breath-wallpapers'
     'sddm-breath-theme')
 pkgver=21.2.0
-pkgrel=0
+pkgrel=4
 url=https://gitlab.manjaro.org/artwork/themes/breath
 arch=('any')
 license=('LGPL')
@@ -18,13 +21,28 @@ prepare() {
   mkdir -p build
 }
 
+package_plasma5-themes-breath-migration() {
+  pkgconf='Breath theme migration routine for kconf_update'
+  arch=('x86_64' 'aarch64')
+  cd build && rm -rf *
+  cmake ../breath -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DKDE_INSTALL_USE_QT_SYS_PATHS=ON -DBUILD_MIGRATION=ON
+  make && make DESTDIR="${pkgdir}" install
+}
+
 package_plasma5-themes-breath() {
-  pkgdesc='Breath2 theme for KDE Plasma 5'
-  depends=('breeze')
+  pkgdesc='Breath theme for KDE Plasma 5'
+  depends=('breeze' 'plasma5-themes-breath-migration')
   conflicts=('plasma5-themes-breath2' 'breath2-icon-themes')
   replaces=('plasma5-themes-breath2' 'breath2-icon-themes')
-  cd build
+  cd build && rm -rf *
   cmake ../breath -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DKDE_INSTALL_USE_QT_SYS_PATHS=ON -DBUILD_PLASMA_THEMES=ON
+  make && make DESTDIR="${pkgdir}" install
+}
+
+package_plasma5-themes-breath-extra() {
+  pkgdesc='Additional Breath colors for KDE Plasma 5'
+  cd build && rm -rf *
+  cmake ../breath -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DKDE_INSTALL_USE_QT_SYS_PATHS=ON -DBUILD_EXTRA_COLORS=ON
   make && make DESTDIR="${pkgdir}" install
 }
 
