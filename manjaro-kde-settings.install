@@ -2,8 +2,11 @@
 
 post_install() {
   if [ ! -e /var/lib/sddm/.config/kdeglobals ]; then
+      mkdir -p /var/lib/sddm/.config
       cp /etc/skel/.config/kdeglobals /var/lib/sddm/.config/kdeglobals
   fi
+
+  sed -i -e '/Current=breath2/Current=breath/g' /etc/sddm.conf
 }
 
 post_upgrade() {
