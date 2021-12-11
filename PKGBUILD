@@ -1,13 +1,8 @@
 # Maintainer: Bernhard Landauer <bernhard@manjaro.org>
 
 pkgname=manjaro-kde-settings
-<<<<<<< HEAD
-pkgver=20211209
+pkgver=20211211
 pkgrel=1
-=======
-pkgver=20211205
-pkgrel=2
->>>>>>> f425edd ([pkg-upd] 20211205-2)
 _branch='master'
 pkgdesc="Manjaro Linux KDE settings"
 arch=('any')
