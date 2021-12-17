@@ -12,7 +12,9 @@ conflicts=('manjaro-desktop-settings-19.0')
 provides=('manjaro-desktop-settings-19.0')
 replaces=('manjaro-kde-settings-dev')
 makedepends=('git')
-depends=('manjaro-base-skel'
+depends=(
+         'zsh'
+         'manjaro-base-skel'
          'manjaro-icons'
          'noto-fonts-compat'
          'plasma5-themes-breath'
