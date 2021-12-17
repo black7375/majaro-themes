@@ -54,7 +54,7 @@ build() {
 }
 
 package_plasma5-themes-breath-migration() {
-  pkgconf='Breath theme migration routine for kconf_update'
+  pkgdesc='Breath theme migration routine for kconf_update'
   arch=('x86_64' 'aarch64')
 
   make -C build-breath-migration DESTDIR="${pkgdir}" install
