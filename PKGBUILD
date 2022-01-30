@@ -1,25 +1,21 @@
 # Maintainer: Bernhard Landauer <bernhard@manjaro.org>
 
 pkgname=manjaro-kde-settings
-pkgver=20211211
+pkgver=20220129
 pkgrel=1
-_branch='master'
 pkgdesc="Manjaro Linux KDE settings"
 arch=('any')
-url="https://gitlab.manjaro.org/profiles-and-settings/$pkgname"
+url="https://gitlab.manjaro.org/profiles-and-settings/manjaro-kde-settings"
 license=('GPL')
-conflicts=('manjaro-desktop-settings-19.0')
-provides=('manjaro-desktop-settings-19.0')
-replaces=('manjaro-kde-settings-dev')
+conflicts=('manjaro-desktop-settings-19.0' 'manjaro-kde-settings-dev')
+replaces=('manjaro-desktop-settings-19.0' 'manjaro-kde-settings-dev')
 makedepends=('git')
-depends=(
-         'zsh'
+depends=('zsh'
          'manjaro-base-skel'
          'manjaro-icons'
          'noto-fonts-compat'
          'plasma5-themes-breath'
          'sddm-breath-theme'
-         'xdg-desktop-portal'
          'xdg-desktop-portal-kde')
 source=("git+$url.git")
 md5sums=('SKIP')
