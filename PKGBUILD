@@ -9,8 +9,8 @@ pkgname=(
     'breath-wallpapers'
     'sddm-breath-theme')
 pkgver=21.3.0
-pkgrel=1
-_commit=3af55ccb692006dbefbff3176223206871a53624
+pkgrel=2
+_commit=eb5b6e5e37f2fe003242b21f16caf55e39d53af8
 arch=('any')
 url="https://gitlab.manjaro.org/artwork/themes/breath"
 license=('LGPL')
