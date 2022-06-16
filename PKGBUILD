@@ -8,9 +8,9 @@ pkgname=(
     'plasma5-themes-breath-extra'
     'breath-wallpapers'
     'sddm-breath-theme')
-pkgver=21.2.0
-pkgrel=2
-_commit=cb3a79366ac13dddd4454fdc5511b8d374e71de9
+pkgver=21.3.0
+pkgrel=1
+_commit=3af55ccb692006dbefbff3176223206871a53624
 arch=('any')
 url="https://gitlab.manjaro.org/artwork/themes/breath"
 license=('LGPL')
