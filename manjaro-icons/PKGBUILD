@@ -1,15 +1,15 @@
 # Maintainer: Bernhard Landauer <oberon@manjaro.org>
 
 pkgname=manjaro-icons
-pkgver=20191015
+pkgver=20221204
 pkgrel=1
-_commit=75988529ecfe9751c481c03d98979888fd2113a5
+_commit=b53da25fcf78f53b554be4f88eaad70e4be6a0fb
 pkgdesc='Official Manjaro icons'
 arch=('any')
 url="https://gitlab.manjaro.org/artwork/icon-themes/$pkgname"
 licence=GPL
 source=("$url/-/archive/$_commit/$pkgname-$_commit.tar.gz")
-md5sums=('ee89fb9aa18d3be1a38bf9df8486da96')
+sha256sums=("63340276a0cb97d854412a7e4111000974e8de861864e67268267b6c322b560f")
 
 pkgver() {
   date +%Y%m%d
