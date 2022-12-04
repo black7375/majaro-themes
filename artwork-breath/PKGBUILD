@@ -10,18 +10,19 @@ pkgname=(
     'sddm-breath-theme')
 pkgver=21.3.0
 pkgrel=4
-_commit=d3ca5e405aa7afa4e18cef462b303e298c7ff2b1
+_commit=e14a24efb795128b3b4e3faffa0d72360f5ece59
 arch=('any')
-url="https://gitlab.manjaro.org/artwork/themes/breath"
+sourcename="breath"
+url="https://gitlab.manjaro.org/artwork/themes/${sourcename}"
 license=('LGPL')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'plasma-framework')
-source=("git+$url.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("$url/-/archive/$_commit/$sourcename-$_commit.tar.gz")
+sha256sums=("09bfbac56ab4b151272ac74caeb6f07deb472de4022f14ad1ac9c66c271ed4ca")
 
+builddir="$sourcename-$_commit"
 build() {
-
   echo "Building plasma5-themes-breath-migration..."
-  cmake -B build-breath-migration -S breath \
+  cmake -B build-breath-migration -S "${builddir}"\
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
@@ -29,7 +30,7 @@ build() {
   make -C build-breath-migration
 
   echo "Building plasma5-themes-breath..."
-  cmake -B build-breath -S breath \
+  cmake -B build-breath -S "${builddir}" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
@@ -37,7 +38,7 @@ build() {
   make -C build-breath
 
   echo "Building plasma5-themes-breath-extra..."
-  cmake -B build-breath-extra -S breath \
+  cmake -B build-breath-extra -S "${builddir}" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
@@ -45,7 +46,7 @@ build() {
   make -C build-breath-extra
 
   echo "Building sddm-breath-theme..."
-  cmake -B build-sddm -S breath \
+  cmake -B build-sddm -S "${builddir}" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
@@ -78,7 +79,7 @@ package_plasma5-themes-breath-extra() {
 package_breath-wallpapers() {
   pkgdesc='Breath wallpapers'
 
-  cd "${srcdir}/breath/wallpapers"
+  cd "${srcdir}/${builddir}/wallpapers"
   install -Dm644 Bamboo/contents/images/5120x2880.png \
     ${pkgdir}/usr/share/backgrounds/bamboo.png
   install -Dm644 Bamboo\ at\ Night/contents/images/5120x2880.png \

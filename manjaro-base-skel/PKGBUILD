@@ -11,7 +11,7 @@ sourcename="desktop-settings"
 url="https://gitlab.manjaro.org/profiles-and-settings/${sourcename}"
 license=('GPL')
 makedepends=('git')
-source=("$url/-/archive/$_commit/$pkgname-$_commit.tar.gz")
+source=("$url/-/archive/$_commit/$sourcename-$_commit.tar.gz")
 sha256sums=("edea278127b1cb661806d5d0b5aaae8cc631d6ea655af0458cee3a10acd94bd6")
 install=$pkgname.install
 
