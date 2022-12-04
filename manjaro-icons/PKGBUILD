@@ -4,10 +4,10 @@ pkgname=manjaro-icons
 pkgver=20221204
 pkgrel=1
 _commit=b53da25fcf78f53b554be4f88eaad70e4be6a0fb
-pkgdesc='Official Manjaro icons'
-arch=('any')
+pkgdesc="Official Manjaro icons"
+arch=("any")
 url="https://gitlab.manjaro.org/artwork/icon-themes/$pkgname"
-licence=GPL
+license=("GPL")
 source=("$url/-/archive/$_commit/$pkgname-$_commit.tar.gz")
 sha256sums=("63340276a0cb97d854412a7e4111000974e8de861864e67268267b6c322b560f")
 
@@ -20,7 +20,7 @@ package() {
   cp -r $srcdir/$pkgname-$_commit/green $pkgdir/usr/share/icons/manjaro
   cp -r $srcdir/$pkgname-$_commit/maia $pkgdir/usr/share/icons/manjaro
   cp -r $srcdir/$pkgname-$_commit/white $pkgdir/usr/share/icons/manjaro
-  
+
   install -dm755 $pkgdir/usr/share/icons/hicolor/16x16/apps
   install -dm755 $pkgdir/usr/share/icons/hicolor/22x22/apps
   install -dm755 $pkgdir/usr/share/icons/hicolor/24x24/apps
@@ -30,7 +30,7 @@ package() {
   install -dm755 $pkgdir/usr/share/icons/hicolor/96x96/apps
   install -dm755 $pkgdir/usr/share/icons/hicolor/128x128/apps
   install -dm755 $pkgdir/usr/share/icons/hicolor/scalable/apps
-  
+
   cd $pkgdir/usr/share/icons/hicolor
   src=/usr/share/icons/manjaro/maia
   ln -s $src/16x16.png 16x16/apps/manjaro.png

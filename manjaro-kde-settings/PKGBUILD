@@ -5,19 +5,20 @@ pkgver=20221204
 pkgrel=1
 _commit=e5ab9bc19d0178467e9b421866961f0346460aa7
 pkgdesc="Manjaro Linux KDE settings"
-arch=('any')
+arch=("any")
 url="https://gitlab.manjaro.org/profiles-and-settings/manjaro-kde-settings"
-license=('GPL')
-conflicts=('manjaro-desktop-settings-19.0' 'manjaro-kde-settings-dev')
-replaces=('manjaro-desktop-settings-19.0' 'manjaro-kde-settings-dev')
-makedepends=('git')
-depends=('zsh'
-         'manjaro-base-skel'
-         'manjaro-icons'
-         'noto-fonts-extra'
-         'plasma5-themes-breath'
-         'sddm-breath-theme'
-         'xdg-desktop-portal-kde')
+license=("GPL")
+conflicts=("manjaro-desktop-settings-19.0" "manjaro-kde-settings-dev")
+replaces=("manjaro-desktop-settings-19.0" "manjaro-kde-settings-dev")
+depends=(
+  "zsh"
+  "manjaro-base-skel"
+  "manjaro-icons"
+  "noto-fonts-extra"
+  "plasma5-themes-breath"
+  "sddm-breath-theme"
+  "xdg-desktop-portal-kde"
+)
 source=("$url/-/archive/$_commit/$pkgname-$_commit.tar.gz")
 sha256sums=("9529b055bfae763f18c6fbda763f00f3621d8666d38bd08836426ff63b2e16a6")
 install=manjaro-kde-settings.install

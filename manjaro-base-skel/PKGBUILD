@@ -5,21 +5,20 @@ pkgname=manjaro-base-skel
 pkgver=20221204
 pkgrel=1
 _commit=e10700a38db548b66e2898547564730ff6156246
-pkgdesc='Manjaro Linux base skeleton files'
-arch=('any')
+pkgdesc="Manjaro Linux base skeleton files"
+arch=("any")
 sourcename="desktop-settings"
 url="https://gitlab.manjaro.org/profiles-and-settings/${sourcename}"
-license=('GPL')
-makedepends=('git')
+license=("GPL")
 source=("$url/-/archive/$_commit/$sourcename-$_commit.tar.gz")
 sha256sums=("edea278127b1cb661806d5d0b5aaae8cc631d6ea655af0458cee3a10acd94bd6")
 install=$pkgname.install
 
 pkgver() {
-	date +%Y%m%d
+  date +%Y%m%d
 }
 
 package() {
-	install -d $pkgdir/etc
-	cp -r $srcdir/${sourcename}-$_commit/shared/skel $pkgdir/etc
+  install -d $pkgdir/etc
+  cp -r $srcdir/${sourcename}-$_commit/shared/skel $pkgdir/etc
 }

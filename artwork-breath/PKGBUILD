@@ -3,19 +3,20 @@
 
 pkgbase=artwork-breath
 pkgname=(
-    'plasma5-themes-breath-migration'
-    'plasma5-themes-breath'
-    'plasma5-themes-breath-extra'
-    'breath-wallpapers'
-    'sddm-breath-theme')
+  "plasma5-themes-breath-migration"
+  "plasma5-themes-breath"
+  "plasma5-themes-breath-extra"
+  "breath-wallpapers"
+  "sddm-breath-theme"
+)
 pkgver=21.3.0
 pkgrel=4
 _commit=e14a24efb795128b3b4e3faffa0d72360f5ece59
-arch=('any')
+arch=("any")
 sourcename="breath"
 url="https://gitlab.manjaro.org/artwork/themes/${sourcename}"
-license=('LGPL')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'plasma-framework')
+license=("LGPL")
+makedepends=("cmake" "extra-cmake-modules" "plasma-framework")
 source=("$url/-/archive/$_commit/$sourcename-$_commit.tar.gz")
 sha256sums=("09bfbac56ab4b151272ac74caeb6f07deb472de4022f14ad1ac9c66c271ed4ca")
 
@@ -55,29 +56,29 @@ build() {
 }
 
 package_plasma5-themes-breath-migration() {
-  pkgdesc='Breath theme migration routine for kconf_update'
-  arch=('x86_64' 'aarch64')
+  pkgdesc="Breath theme migration routine for kconf_update"
+  arch=("x86_64" "aarch64")
 
   make -C build-breath-migration DESTDIR="${pkgdir}" install
 }
 
 package_plasma5-themes-breath() {
-  pkgdesc='Breath theme for KDE Plasma 5'
-  depends=('breeze' 'plasma5-themes-breath-migration')
-  conflicts=('plasma5-themes-breath2' 'breath2-icon-themes')
-  replaces=('plasma5-themes-breath2' 'breath2-icon-themes')
+  pkgdesc="Breath theme for KDE Plasma 5"
+  depends=("breeze" "plasma5-themes-breath-migration")
+  conflicts=("plasma5-themes-breath2" "breath2-icon-themes")
+  replaces=("plasma5-themes-breath2" "breath2-icon-themes")
 
   make -C build-breath DESTDIR="${pkgdir}" install
 }
 
 package_plasma5-themes-breath-extra() {
-  pkgdesc='Additional Breath colors for KDE Plasma 5'
+  pkgdesc="Additional Breath colors for KDE Plasma 5"
 
   make -C build-breath-extra DESTDIR="${pkgdir}" install
 }
 
 package_breath-wallpapers() {
-  pkgdesc='Breath wallpapers'
+  pkgdesc="Breath wallpapers"
 
   cd "${srcdir}/${builddir}/wallpapers"
   install -Dm644 Bamboo/contents/images/5120x2880.png \
@@ -88,9 +89,9 @@ package_breath-wallpapers() {
 
 package_sddm-breath-theme() {
   pkgdesc="Breath theme for SDDM"
-  depends=('plasma-framework' 'plasma-workspace')
-  conflicts=('sddm-breath2-theme-dev')
-  replaces=('sddm-breath2-theme')
+  depends=("plasma-framework" "plasma-workspace")
+  conflicts=("sddm-breath2-theme-dev")
+  replaces=("sddm-breath2-theme")
 
   make -C build-sddm DESTDIR="${pkgdir}" install
 }
