@@ -1,8 +1,9 @@
 # Maintainer: Bernhard Landauer <bernhard@manjaro.org>
 
 pkgname=manjaro-kde-settings
-pkgver=20220129
+pkgver=20221204
 pkgrel=1
+_commit=e5ab9bc19d0178467e9b421866961f0346460aa7
 pkgdesc="Manjaro Linux KDE settings"
 arch=('any')
 url="https://gitlab.manjaro.org/profiles-and-settings/manjaro-kde-settings"
@@ -13,12 +14,12 @@ makedepends=('git')
 depends=('zsh'
          'manjaro-base-skel'
          'manjaro-icons'
-         'noto-fonts-compat'
+         'noto-fonts-extra'
          'plasma5-themes-breath'
          'sddm-breath-theme'
          'xdg-desktop-portal-kde')
-source=("git+$url.git")
-md5sums=('SKIP')
+source=("$url/-/archive/$_commit/$pkgname-$_commit.tar.gz")
+sha256sums=("9529b055bfae763f18c6fbda763f00f3621d8666d38bd08836426ff63b2e16a6")
 install=manjaro-kde-settings.install
 
 pkgver() {
@@ -28,6 +29,6 @@ pkgver() {
 package_manjaro-kde-settings() {
   pkgdesc="Manjaro Linux KDE settings"
 
-  cp -r $pkgname/etc $pkgdir/etc
-  cp -r $pkgname/usr $pkgdir/usr
+  cp -r $pkgname-$_commit/etc $pkgdir/etc
+  cp -r $pkgname-$_commit/usr $pkgdir/usr
 }
