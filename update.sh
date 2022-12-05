@@ -19,8 +19,8 @@ function getSourceLastCommitID() {
   local sourceHOST=$(getSourceURL "${projectName}" |  getHostURL)
   local sourceAPI="${sourceHOST}/api/v4/projects/${sourceID}/repository/commits"
 
-  local lastestCommitID=$(curl   -sL  "${sourceAPI}" | jq -r ".[0].id")
-  echo "${lastestCommitID}"
+  local latestCommitID=$(curl   -sL  "${sourceAPI}" | jq -r ".[0].id")
+  echo "${latestCommitID}"
 }
 
 function getSourceLastSHA() {
@@ -49,14 +49,14 @@ function updateSource() {
     source "${projectName}/PKGBUILD"
 
     echo "-> Get commit id..."
-    local lastestCommitID=$(getSourceLastCommitID "${projectName}")
-    echo "-> ${_commit} to ${lastestCommitID}"
-    replaceSource "${projectName}" "_commit=" "${lastestCommitID}"
+    local latestCommitID=$(getSourceLastCommitID "${projectName}")
+    echo "-> ${_commit} to ${latestCommitID}"
+    replaceSource "${projectName}" "_commit=" "${latestCommitID}"
 
     echo "-> Get sha256..."
-    local lastestSHA=$(getSourceLastSHA "${projectName}" "${lastestCommitID}")
-    echo "-> ${sha256sums} to ${lastestSHA}"
-    replaceSource "${projectName}" "sha256sums=" "(\"${lastestSHA}\")"
+    local latestSHA=$(getSourceLastSHA "${projectName}" "${latestCommitID}")
+    echo "-> ${sha256sums} to ${latestSHA}"
+    replaceSource "${projectName}" "sha256sums=" "(\"${latestSHA}\")"
   done
 }
 
